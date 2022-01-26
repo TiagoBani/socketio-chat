@@ -3,10 +3,10 @@ import ChatMessage from '../events/chat_message.event'
 
 const chatRouter = Router()
 
-chatRouter.get('/', (req, res, next) => {
-    const io = req.io
+chatRouter.post('/', (req, res, next) => {
+    const {io, body} = req
 
-    new ChatMessage(io).pub('deu bom')
+    new ChatMessage(io).pub(body?.message, body?.socketId)
     res.send()
 })
 

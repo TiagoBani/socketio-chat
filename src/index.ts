@@ -17,6 +17,7 @@ try{
     const eventHandler = new EventHandler()
     eventHandler.listen(io)
 
+    app.use(express.json())
     app.use((req, res, next) => {
         req.io = io
         next()
